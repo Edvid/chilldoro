@@ -10,13 +10,13 @@ export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
           <h1
             className='text-[8em] text-center text-green-700'
           >
-            {Math.floor(props.timeInfo.secondsSinceStartTime)}
+            {Math.ceil(props.timeInfo.pomodoroType.active * 60 - props.timeInfo.secondsSinceStartTime)}
           </h1>
           :
           <h1
             className='text-[8em] text-center text-cyan-300'
           >
-            {Math.floor(props.timeInfo.secondsSinceStartTime - props.timeInfo.pomodoroType.active * 60)}
+            {Math.ceil(props.timeInfo.pomodoroType.break * 60 - (props.timeInfo.secondsSinceStartTime - props.timeInfo.pomodoroType.active * 60))}
           </h1>
       }
     </div>

@@ -25,6 +25,7 @@ export default function TimeManager() {
     const timer = setInterval(() => {
       setTime(new Date());
       if ( isPaused ) setPausedSeconds(pausedSeconds + 1);
+      if ( secondsSinceStartTime >= (pomodoroType.active + pomodoroType.break) * 60 ) setSessionStartTime(new Date());
     }, 1000)
 
     return () => clearInterval(timer);

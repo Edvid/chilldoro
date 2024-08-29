@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/.',
+  basePath: 'https://raw.githubusercontent.com/Edvid/chilldoro/main/docs',
   output: 'export',
 };
 

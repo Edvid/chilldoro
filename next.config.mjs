@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/chilldoro',
+  basePath: '/chilldoro/docs',
   output: 'export',
 };
 

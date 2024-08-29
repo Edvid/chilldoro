@@ -39,6 +39,7 @@ export default function TimeManager() {
     rawSecondsSinceStartTime: rawSecondsSinceStartTime,
     paused: pausedSeconds,
     secondsSinceStartTime: secondsSinceStartTime,
+    pomodoroType: pomodoroType,
     totalRatio: secondsSinceStartTime / ((pomodoroType.active + pomodoroType.break) * 60)
   }
 

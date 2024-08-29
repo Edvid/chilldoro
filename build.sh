@@ -4,7 +4,6 @@
 
 next build && \
 mv docs/_next docs/next && \
-grep -rl '/_next' docs | \
+grep -rl '\/_next' docs | \
 xargs sed -i 's/\/_next/\/next/g' && \
-grep -rl 'href=\/favicon.ico' docs | \
-xargs sed -i 's/href=\/favicon.ico/href=\/chilldoro\/favicon.ico/g'
+sed -i 's/href=\"\/favicon.ico/href=\"\/chilldoro\/favicon.ico/g' docs/index.html

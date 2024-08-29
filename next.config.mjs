@@ -6,7 +6,10 @@ const nextConfig = (phase) => {
   return {
     assetPrefix: isDev ? undefined : '/chilldoro',
     output: 'export',
-    distDir: 'docs'
+    distDir: 'docs',
+    images: {
+      unoptimized: true
+    }
   }
 };
 

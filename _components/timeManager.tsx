@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import TimeLeft from './timeLeft';
 import { TimeInfo, PomodoroTypes } from '~/_utils/types';
+import ImageDisplay from '~/_components/ImageDisplay';
 
 export default function TimeManager() {
   const [ pomodoroType, setPomodoroType ] = useState(PomodoroTypes.normal);
@@ -21,6 +22,9 @@ export default function TimeManager() {
     }
   }
 
+  const rawSecondsSinceStartTime = (time.getTime() - sessionStartTime.getTime()) / 1000;
+  const secondsSinceStartTime = (time.getTime() - sessionStartTime.getTime()) / 1000 - pausedSeconds;
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -29,10 +33,7 @@ export default function TimeManager() {
     }, 1000)
 
     return () => clearInterval(timer);
-  }, [ time, isPaused, pausedSeconds ])
-
-  const rawSecondsSinceStartTime = (time.getTime() - sessionStartTime.getTime()) / 1000;
-  const secondsSinceStartTime = (time.getTime() - sessionStartTime.getTime()) / 1000 - pausedSeconds;
+  }, [time, isPaused, pausedSeconds, secondsSinceStartTime, pomodoroType.active, pomodoroType.break])
 
   const timeInfo: TimeInfo = {
     sessionStartTime: sessionStartTime,
@@ -50,6 +51,9 @@ export default function TimeManager() {
       tabIndex={0}
       onKeyDown={keyDownHandler}
     >
+      <ImageDisplay
+        timeInfo={timeInfo}
+      />
       <TimeLeft
         timeInfo={timeInfo}
       />

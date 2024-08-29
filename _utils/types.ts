@@ -18,3 +18,5 @@ export type TimeInfo = {
   pomodoroType: PomodoroType,
   totalRatio: number
 }
+
+export type Season = 'spring' | 'summer' | 'autumn' | 'winter';

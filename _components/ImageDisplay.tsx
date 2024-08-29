@@ -13,7 +13,7 @@ export default function ImageDisplay(props: {timeInfo: TimeInfo} ) {
       <Image
         fill
         objectFit={'contain'}
-        src={"/" + season + ".png"}
+        src={(process.env.NODE_ENV === 'production' ? "/chilldoro/" : "/") + season + ".png"}
         alt={season + " image"}
       />
     </div>

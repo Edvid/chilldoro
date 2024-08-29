@@ -15,6 +15,6 @@ export type TimeInfo = {
   rawSecondsSinceStartTime: number,
   paused: number,
   secondsSinceStartTime: number,
-  pomodoroType: PomodoroType
+  pomodoroType: PomodoroType,
   totalRatio: number
 }

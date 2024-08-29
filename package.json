@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -rf docs; next build && mv out docs && mv docs/_next docs/next && grep -rl '/_next' docs | xargs sed -i 's/\\\/_next/\\\/next/g'",
     "start": "next start",
     "lint": "next lint"
   },

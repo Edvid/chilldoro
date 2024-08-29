@@ -4,7 +4,7 @@ const nextConfig = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER
   /** @type {import('next').NextConfig} */
   return {
-    assetPrefix: isDev ? undefined : '',
+    assetPrefix: isDev ? undefined : '/chilldoro',
     output: 'export',
   }
 };

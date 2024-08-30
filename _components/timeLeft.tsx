@@ -13,12 +13,10 @@ export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
   const min = Math.floor(seconds / 60);
   const time = `${fitToTwo(min)}:${fitToTwo(sec)}`;
   return (
-    <div>
-      <h1
-        className={`text-[8em] text-center ${ isActive ? "text-green-700" : "text-cyan-300"}`}
-      >
-        {time}
-      </h1>
-    </div>
+    <h1
+      className={`text-2xl font-extrabold text-center ${ isActive ? "text-green-700" : "text-cyan-300"}`}
+    >
+      {time}
+    </h1>
   )
 }

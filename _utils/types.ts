@@ -16,7 +16,8 @@ export type TimeInfo = {
   paused: number,
   secondsSinceStartTime: number,
   pomodoroType: PomodoroType,
-  totalRatio: number
+  trueRatio: number,
+  displayRatio: number
 }
 
 export type Season = 'spring' | 'summer' | 'autumn' | 'winter';

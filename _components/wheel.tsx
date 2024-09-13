@@ -4,8 +4,8 @@ import TimeLeft from "~/_components/timeLeft";
 import Image from 'next/image'
 
 export default function Wheel(props: {timeInfo: TimeInfo} ) {
-  const winterStartInRads = 4.22;
-  const handleRot = (props.timeInfo.displayRatio * Math.PI + winterStartInRads).toString() + "rad";
+  const winterStartInRads = 4.19;
+  const handleRot = (props.timeInfo.displayRatio * Math.PI * 2 + winterStartInRads).toString() + "rad";
   return (
     <div>
       <div

@@ -6,12 +6,11 @@ function fitToTwo(str: string | number){
   return ("0" + str).slice(-2);
 }
 function play(filename: string) {
-  console.log("Now playning: " + filename);
   var audio = new Audio(filename);
   audio.play();
 }
 
-let previousIsActive: boolean = true;
+let previousIsActive;
 
 export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
   const isActive = props.timeInfo.secondsSinceStartTime <= props.timeInfo.pomodoroType.active * 60;
@@ -34,9 +33,9 @@ export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
   })();
 
   if (!previousIsActive && isActive) {
-    play('spring_upon_us.mp3');
+    play('public/spring_upon_us.mp3');
   } else if (previousIsActive && !isActive) {
-    play('winter_upon_us.mp3')
+    play('public/winter_upon_us.mp3')
   }
 
   previousIsActive = isActive;

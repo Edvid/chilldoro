@@ -6,7 +6,6 @@ function fitToTwo(str: string | number){
   return ("0" + str).slice(-2);
 }
 function play(filename: string) {
-  console.log("Now playning: " + filename);
   var audio = new Audio(filename);
   audio.play();
 }
@@ -24,12 +23,12 @@ export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
   const color = (() => {
     if (!props.timeInfo.paused) {
       if (isActive) {
-        return "text-green-700";
+        return "text-green-700 bg-white";
       } else {
-        return "text-cyan-300";
+        return "text-cyan-30 bg-white0";
       }
     } else {
-      return "text-cyan-200"
+      return "text-black bg-cyan-200"
     }
   })();
 
@@ -42,7 +41,7 @@ export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
   previousIsActive = isActive;
   return (
     <h1
-      className={`text-2xl font-extrabold text-center ${color}`}
+      className={`rounded-lg p-2 text-2xl font-extrabold text-center ${color}`}
     >
       {time}
     </h1>

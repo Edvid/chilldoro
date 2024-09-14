@@ -13,7 +13,7 @@ export type TimeInfo = {
   sessionStartTime: Date,
   currentTime: Date,
   rawSecondsSinceStartTime: number,
-  paused: number,
+  paused: boolean,
   secondsSinceStartTime: number,
   pomodoroType: PomodoroType,
   trueRatio: number,

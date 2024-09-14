@@ -53,7 +53,7 @@ export default function TimeManager() {
     sessionStartTime: sessionStartTime,
     currentTime: time,
     rawSecondsSinceStartTime: rawSecondsSinceStartTime,
-    paused: pausedSeconds,
+    paused: isPaused,
     secondsSinceStartTime: secondsSinceStartTime,
     pomodoroType: pomodoroType,
     trueRatio: secondsSinceStartTime / totalPomodoroSeconds,

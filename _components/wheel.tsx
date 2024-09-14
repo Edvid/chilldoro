@@ -19,13 +19,9 @@ export default function Wheel(props: {timeInfo: TimeInfo} ) {
           alt="wheel image"
         />
         <div className="py-[calc(10svw-2em)] px-[calc(10svw-4em)]">
-          <div
-            className="rounded-lg bg-white p-2"
-          >
-            <TimeLeft
-              timeInfo={props.timeInfo}
-            />
-          </div>
+          <TimeLeft
+            timeInfo={props.timeInfo}
+          />
         </div>
         <Image
           className="z-[-25]"

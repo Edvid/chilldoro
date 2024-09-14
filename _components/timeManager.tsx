@@ -38,7 +38,6 @@ export default function TimeManager() {
       setTime(newTime);
       if ( isPaused ) {
         setPausedSeconds(pausedSeconds + diff);
-        console.log(diff)
       }
       if ( secondsSinceStartTime >= (pomodoroType.active + pomodoroType.break) * 60 ) setSessionStartTime(new Date());
     }, 100)

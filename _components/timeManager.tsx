@@ -33,9 +33,12 @@ export default function TimeManager() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date());
+      const newTime = new Date();
+      const diff = (newTime.getTime() - time.getTime()) / 1000;
+      setTime(newTime);
       if ( isPaused ) {
-        setPausedSeconds(pausedSeconds + 0.1);
+        setPausedSeconds(pausedSeconds + diff);
+        console.log(diff)
       }
       if ( secondsSinceStartTime >= (pomodoroType.active + pomodoroType.break) * 60 ) setSessionStartTime(new Date());
     }, 100)

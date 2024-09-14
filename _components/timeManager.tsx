@@ -34,9 +34,11 @@ export default function TimeManager() {
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
-      if ( isPaused ) setPausedSeconds(pausedSeconds + 1);
+      if ( isPaused ) {
+        setPausedSeconds(pausedSeconds + 0.1);
+      }
       if ( secondsSinceStartTime >= (pomodoroType.active + pomodoroType.break) * 60 ) setSessionStartTime(new Date());
-    }, 1000)
+    }, 100)
 
     return () => clearInterval(timer);
   }, [time, isPaused, pausedSeconds, secondsSinceStartTime, pomodoroType.active, pomodoroType.break])
@@ -60,6 +62,7 @@ export default function TimeManager() {
     <div
       autoFocus={true}
       tabIndex={0}
+      className='min-h-screen'
       onKeyDown={keyDownHandler}
     >
       <ImageDisplay

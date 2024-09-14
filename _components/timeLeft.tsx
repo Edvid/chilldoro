@@ -9,12 +9,26 @@ function fitToTwo(str: string | number){
 export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
   const isActive = props.timeInfo.secondsSinceStartTime <= props.timeInfo.pomodoroType.active * 60;
   const seconds = isActive ?  Math.ceil(props.timeInfo.pomodoroType.active * 60 - props.timeInfo.secondsSinceStartTime) : Math.ceil(props.timeInfo.pomodoroType.break * 60 - (props.timeInfo.secondsSinceStartTime - props.timeInfo.pomodoroType.active * 60));
+
   const sec = seconds % 60;
   const min = Math.floor(seconds / 60);
   const time = `${fitToTwo(min)}:${fitToTwo(sec)}`;
+
+  const color = (() => {
+    if (!props.timeInfo.paused) {
+      if (isActive) {
+        return "text-green-700";
+      } else {
+        return "text-cyan-300";
+      }
+    } else {
+      return "text-cyan-200"
+    }
+  })();
+
   return (
     <h1
-      className={`text-2xl font-extrabold text-center ${ isActive ? "text-green-700" : "text-cyan-300"}`}
+      className={`text-2xl font-extrabold text-center ${color}`}
     >
       {time}
     </h1>

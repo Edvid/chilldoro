@@ -9,7 +9,7 @@ export default function Wheel(props: {timeInfo: TimeInfo} ) {
   return (
     <div>
       <div
-        className="mr-auto size-[20svw] relative"
+        className="absolute top-0 left-0 size-[20svw]"
       >
         <Image
           className="z-[-50]"

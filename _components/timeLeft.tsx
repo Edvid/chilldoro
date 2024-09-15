@@ -1,13 +1,10 @@
 "use client"
 import React from 'react'
 import { TimeInfo } from '~/_utils/types'
+import { play } from '~/_utils/audio';
 
 function fitToTwo(str: string | number){
   return ("0" + str).slice(-2);
-}
-function play(filename: string) {
-  var audio = new Audio(filename);
-  audio.play();
 }
 
 let previousIsActive: boolean = true;

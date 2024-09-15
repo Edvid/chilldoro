@@ -4,6 +4,8 @@ import { TimeInfo, PomodoroTypes } from '~/_utils/types';
 import ImageDisplay from '~/_components/ImageDisplay';
 import clamp from '~/_utils/clamp';
 import Wheel from '~/_components/wheel';
+import MuteIconDisplay from '~/_components/MuteIconDisplay';
+import { isMuted, mute } from '~/_utils/audio';
 
 // return minimum of two numbers, but 0 if negative
 function posMin(num: number, max: number) {
@@ -22,6 +24,9 @@ export default function TimeManager() {
     switch (event.code) {
       case "KeyF":
         setIsPaused(!isPaused);
+        break;
+      case "KeyM":
+        mute();
         break;
       default:
         console.log(event.code + " was not captured");
@@ -69,6 +74,9 @@ export default function TimeManager() {
     >
       <ImageDisplay
         timeInfo={timeInfo}
+      />
+      <MuteIconDisplay
+        isMuted={isMuted}
       />
       <Wheel
         timeInfo={timeInfo}

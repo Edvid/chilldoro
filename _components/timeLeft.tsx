@@ -22,7 +22,7 @@ export default function TimeLeft(props: {timeInfo: TimeInfo} ) {
       if (isActive) {
         return "text-green-700 bg-white";
       } else {
-        return "text-cyan-30 bg-white0";
+        return "text-cyan-300 bg-white";
       }
     } else {
       return "text-black bg-cyan-200"

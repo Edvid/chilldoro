@@ -5,7 +5,9 @@ import ImageDisplay from '~/_components/ImageDisplay';
 import clamp from '~/_utils/clamp';
 import Wheel from '~/_components/wheel';
 import MuteIconDisplay from '~/_components/MuteIconDisplay';
+import HelpText from '~/_components/HelpText';
 import { isMuted, mute } from '~/_utils/audio';
+import { keyBinds } from '~/_utils/keyBinds';
 
 // return minimum of two numbers, but 0 if negative
 function posMin(num: number, max: number) {
@@ -18,10 +20,15 @@ export default function TimeManager() {
   const [ sessionStartTime, setSessionStartTime ] = useState(new Date());
   const [ time, setTime ] = useState(new Date());
   const [ isPaused, setIsPaused ] = useState(false);
+  const [ showHelpPage, setShowHelpPage ] = useState(false);
   const [ pausedSeconds, setPausedSeconds ] = useState(0);
 
   const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    switch (event.code) {
+    const keyCode = event.code;
+    switch (keyCode as keyof typeof keyBinds) {
+      case "KeyH":
+        setShowHelpPage(!showHelpPage);
+        break;
       case "KeyF":
         setIsPaused(!isPaused);
         break;
@@ -80,6 +87,9 @@ export default function TimeManager() {
       />
       <Wheel
         timeInfo={timeInfo}
+      />
+      <HelpText
+        showPage={showHelpPage}
       />
     </div>
   )

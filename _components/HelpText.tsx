@@ -12,6 +12,7 @@ export default function HelpText(props: {showPage: boolean}) {
             <thead>
               <tr className='border-b-2 font-extrabold'>
                 <th className='py-6'>Key</th>
+                <th className='py-6'>Mnemonic</th>
                 <th className='py-6'>Description</th>
               </tr>
             </thead>
@@ -28,7 +29,12 @@ export default function HelpText(props: {showPage: boolean}) {
                       {key.replace("Key", "")}
                     </td>
                     <td
-                      className='min-w-[20em] py-4'
+                      className='min-w-[10em] py-4'
+                    >
+                      {keyBinds[key as keyof typeof keyBinds].mnemonic}
+                    </td>
+                    <td
+                      className='min-w-[24em] py-4'
                     >
                       {keyBinds[key as keyof typeof keyBinds].description}
                     </td>

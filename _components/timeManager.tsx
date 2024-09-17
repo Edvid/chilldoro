@@ -23,6 +23,9 @@ export default function TimeManager() {
   const [ showHelpPage, setShowHelpPage ] = useState(false);
   const [ pausedSeconds, setPausedSeconds ] = useState(0);
 
+  const rawSecondsSinceStartTime = (time.getTime() - sessionStartTime.getTime()) / 1000;
+  const secondsSinceStartTime = rawSecondsSinceStartTime - pausedSeconds;
+
   const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const keyCode = event.code;
     switch (keyCode as keyof typeof keyBinds) {
@@ -35,13 +38,29 @@ export default function TimeManager() {
       case "KeyM":
         mute();
         break;
+      case "KeyS":
+        const pomodoroTypeArray = Object.keys(PomodoroTypes);
+        const currentPomodoroTypeIndex = pomodoroTypeArray.findIndex((item) => {
+          return JSON.stringify(PomodoroTypes[item]) === JSON.stringify(pomodoroType);
+        });
+        const newType = pomodoroTypeArray[(currentPomodoroTypeIndex + 1) % pomodoroTypeArray.length];
+        setPomodoroType(PomodoroTypes[newType]);
+        setSessionStartTime(new Date());
+      break;
+      case "KeyN":
+        const isActive = secondsSinceStartTime <= pomodoroType.active * 60;
+        if (isActive) {
+          const dateActiveLengthAgo = new Date(new Date().getTime() - pomodoroType.active * 60 * 1000);
+          setSessionStartTime(dateActiveLengthAgo);
+        } else {
+          setSessionStartTime(new Date());
+        }
+
+      break;
       default:
         console.log(event.code + " was not captured");
     }
   }
-
-  const rawSecondsSinceStartTime = (time.getTime() - sessionStartTime.getTime()) / 1000;
-  const secondsSinceStartTime = rawSecondsSinceStartTime - pausedSeconds;
 
   useEffect(() => {
     const timer = setInterval(() => {
